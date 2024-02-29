@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_contract_view_form_inherited" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherited</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='contract_type_id'][@groups='!hr_contract.group_hr_contract_manager']"
+                   position="replace"/>
+            <xpath expr="//field[@name='contract_type_id'][@groups='hr_contract.group_hr_contract_manager']"
+                   position="replace"/>
+
+            <xpath expr="//field[@name='hr_responsible_id']"
+                   position="before">
+                <field name="contract_type_id" options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+            <xpath expr="//field[@name='type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr.hr_contract_type_action"
+            model="ir.actions.act_window">
+        <field name="res_model">hr.contract.type</field>
+        <field name="name">Employee Category</field>
+    </record>
+
+    <record id="hr.menu_view_hr_contract_type"
+            model="ir.ui.menu">
+        <field name="name">Employee Category</field>
+    </record>
+
+    <record id="om_hr_payroll.action_hr_contract_type"
+            model="ir.actions.act_window">
+        <field name="res_model">hr.contract.type</field>
+        <field name="name">Employee Category</field>
+    </record>
+
+    <record id="om_hr_payroll.menu_contract_type"
+            model="ir.ui.menu">
+        <field name="name">Employee Category</field>
+    </record>
+</odoo>
