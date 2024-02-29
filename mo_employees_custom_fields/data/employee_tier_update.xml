@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+    <record id="email_template_employee_tier_change" model="mail.template">
+        <field name="name">Employee Tier Change Notification</field>
+        <field name="model_id" ref="mo_employees_custom_fields.model_hr_employee"/>
+        <field name="subject">Employee Tier Change Alert: {{ object.name }}</field>
+        <field name="email_from">{{ object.company_id.email }}</field>
+        <field name="body_html" type="html">
+            <div style="background-color:#f2f3f5; padding:20px;">
+                <h2 style="color:#4267b2; text-align:center;">Employee,<t
+                        t-out="object.name"
+                />!
+                </h2>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >This is a notification to inform you that an employee's tier status has changed:
+                </p>
+
+                <ul>
+                    <li>Employee:
+                                            <strong>
+                        <t t-out="object.name"/>
+                    </strong>
+                    </li>
+                    <li>Current Tier:
+                        <t t-out="object.tier_employee"/>
+                    </li>
+                </ul>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >This change requires your attention. Please review the employee's status and take any necessary actions.
+                </p>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >Best Regards
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>
