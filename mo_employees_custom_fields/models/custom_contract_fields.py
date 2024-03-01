@@ -27,7 +27,7 @@ class CustomContractFields(models.Model):
             self.days_90_completion_email(employee)
 
     def days_90_completion_email(self, employee):
-        template = self.env.ref('mo_hr_timesheets.'
+        template = self.env.ref('mo_employees_custom_fields.'
                                 'email_template_90_days_completion')
         company_email = (employee.company_id.email or
                          self.env.user.company_id.email)
@@ -189,7 +189,7 @@ class CustomContract(models.Model):
                 self.send_probation_end_email(contract)
 
     def send_probation_notification_email(self, contract, days_left):
-        template = self.env.ref('mo_hr_timesheets.'
+        template = self.env.ref('mo_employees_custom_fields.'
                                 'email_template_probation_reminder')
         company_email = (contract.employee_id.company_id.email or
                          self.env.user.company_id.email)
@@ -207,7 +207,7 @@ class CustomContract(models.Model):
                                                      'subject': email_subject})
 
     def send_probation_end_email(self, contract):
-        template = self.env.ref('mo_hr_timesheets.'
+        template = self.env.ref('mo_employees_custom_fields.'
                                 'email_template_probation_end')
         company_email = (contract.employee_id.company_id.email or
                          self.env.user.company_id.email)
