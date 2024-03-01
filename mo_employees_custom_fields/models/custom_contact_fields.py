@@ -77,10 +77,10 @@ class CustomContactFields(models.Model):
                     and employee.birthday.month == today.month
             ):
 
-                template_employee_id = self.env.ref('mo_hr_timesheets.'
+                template_employee_id = self.env.ref('mo_employees_custom_fields.'
                                                     'email_template_birthday')
                 template_employee_id.send_mail(employee.id, force_send=True)
-                template_coworker_id = self.env.ref('mo_hr_timesheets.'
+                template_coworker_id = self.env.ref('mo_employees_custom_fields.'
                                                     'email_template_coworkers')
 
                 if len(employees) > 1:
@@ -135,7 +135,7 @@ class CustomContactFields(models.Model):
 
     def notify_hr_group(self, employee, message, hr_users):
 
-        template = self.env.ref('mo_hr_timesheets.'
+        template = self.env.ref('mo_employees_custom_fields.'
                                 'email_template_employee_tier_change')
         company_email = (employee.company_id.email or
                          self.env.user.company_id.email)
