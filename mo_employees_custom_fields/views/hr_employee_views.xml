@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='address_home_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='work_location_id']" position="after">
+                <group>
+                    <field name="tier_employee"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']" position="attributes">
+                <attribute name="string">Personal Information</attribute>
+            </xpath>
+            <xpath expr="//field[@name='address_home_id']" position="after">
+                <field name="street_employee"/>
+                <field name="city_employee"/>
+                <field name="state_employee_id"
+                       options="{'no_open' : True}"/>
+                <field name="zip_code_employee" placeholder="A1A 1A1"/>
+                <field name="country_employee_id"/>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="string">Supervisor</attribute>
+            </xpath>
+            <xpath expr="//field[@name='private_email']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+                        <xpath expr="//field[@name='country_employee_id']" position="after">
+                <field name="phone_employee" placeholder="123-456-7890"/>
+                <field name="email__employee" placeholder="mail@exemple.com"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_contract_view_form" model="ir.ui.view">
+            <field name="name">hr.contract.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_start']" position="after">
+                    <field name="probation_period"/>
+                </xpath>
+            </field>
+    </record>
+</odoo>

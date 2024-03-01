@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+        <record id="email_template_birthday" model="mail.template">
+            <field name="name">Birthday Email 1</field>
+            <field name="model_id" ref="mo_employees_custom_fields.model_hr_employee" />
+            <field name="subject">🎂 Happy Birthday, {{ object.name }}!</field>
+            <field name="email_from">{{ object.company_id.email }}</field>
+            <field name="email_to">{{ object.work_email }}</field>
+            <field name="body_html" type="html">
+                <div style="background-color:#f2f3f5; padding:20px;">
+                    <h2 style="color:#4267b2; text-align:center;">Happy Birthday, <t
+                        t-out="object.name"
+                    />!</h2>
+                    <p
+                    style="font-size:16px; text-align:center;"
+                >Another trip around the sun, and you don't look a day older! We wish you a fantastic day full of joy and surprises. May this year bring you closer to your dreams and bless you with abundance and joy. 🎉</p>
+                    <p
+                    style="font-size:16px; text-align:center;"
+                >Remember, you're not getting older, you're gaining more experience. And with each passing year, you become a more valuable member of our team. Here's to an amazing birthday and a year filled with adventure! 🥳</p>
+                    <p
+                    style="font-size:16px; text-align:center;"
+                >Cheers to you on your special day, <t t-out="object.name" />!</p>
+                </div>
+            </field>
+        </record>
+
+
+            <record id="email_template_coworkers" model="mail.template">
+            <field name="name">Coworker's Birthday Email 1</field>
+            <field name="model_id" ref="mo_employees_custom_fields.model_hr_employee" />
+            <field
+            name="subject"
+        >🎉 Birthday Alert: It's {{ ctx['birthday_employee'] }}'s special day!</field>
+            <field name="email_from">{{ object.company_id.email }}</field>
+            <field name="email_to">{{ object.work_email }}</field>
+            <field name="body_html" type="html">
+                <div style="background-color:#f2f3f5; padding:20px;">
+                    <h2
+                    style="color:#4267b2; text-align:center;"
+                >🎉 Birthday Alert 🎉</h2>
+                    <p style="font-size:16px; text-align:center;">Hi <t
+                        t-out="object.name"
+                    />,</p>
+                    <p
+                    style="font-size:16px; text-align:center;"
+                >Something feels different today, right? There's an extra sparkle in the air and a spring in our steps. Wondering why?</p>
+                    <p style="font-size:16px; text-align:center;">It's because it's <b
+                    ><t t-out="ctx['birthday_employee']" /></b>'s birthday! 🎂</p>
+                    <p
+                    style="font-size:16px; text-align:center;"
+                >So, let's crank up the joy and celebration in the office today. Don't forget to wish them a happy birthday and make this day even more special for them! 🎈🎁</p>
+                </div>
+            </field>
+        </record>
+
+    </odoo>

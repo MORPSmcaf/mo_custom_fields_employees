@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+    <record id="email_template_probation_reminder" model="mail.template">
+        <field name="name">reminder dat of probation</field>
+        <field name="model_id" ref="mo_employees_custom_fields.model_hr_employee"/>
+        <field name="subject">Employee, {{ object.name }}</field>
+        <field name="email_from">{{ object.company_id.email }}</field>
+        <field name="body_html" type="html">
+            <div style="background-color:#f2f3f5; padding:20px;">
+                <h2 style="color:#4267b2; text-align:center;">Employee,<t
+                        t-out="object.name"
+                />!
+                </h2>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >This email is to inform you that
+                    <strong>
+                        <t t-out="object.name"/>
+                    </strong>
+                    will end his probation period soon
+                </p>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >This is a reminder email of employee,
+                    <strong>
+                        <t t-out="object.name"/>
+                    </strong>
+                    .
+                </p>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >Please review their profile for eligibility for full-time employment.
+                </p>
+                <p
+                        style="font-size:16px; text-align:center;"
+                >Thank you
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>

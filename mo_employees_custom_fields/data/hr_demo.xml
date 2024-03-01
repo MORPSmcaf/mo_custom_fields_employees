@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="hr.contract_type_permanent" model="hr.contract.type">
+            <field name="name">Full-time</field>
+        </record>
+
+        <record id="hr.contract_type_temporary" model="hr.contract.type">
+            <field name="name">Part-time</field>
+        </record>
+
+        <record id="hr.contract_type_interim" model="hr.contract.type">
+            <field name="name">Supply</field>
+        </record>
+        <record id="contract_type_term" model="hr.contract.type">
+            <field name="name">Term</field>
+        </record>
+</odoo>
