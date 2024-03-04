@@ -1,5 +1,5 @@
 {
-    'name': "HR employee fields",
+    'name': "HR Employee Custom Fields",
     'summary': "Custom HR Employee Information",
     'version': '16.0.1.0.0',
     'website': "https://mcaf.nb.ca/en/",
