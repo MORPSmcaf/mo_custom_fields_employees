@@ -8,7 +8,7 @@
     'license': 'OPL-1',
     "application": True,
     "installable": True,
-    'depends': ['base', 'hr'],
+    'depends': ['base', 'hr', 'om_hr_payroll'],
     'data': [
         'security/ir.model.access.csv',
         'data/kron_data.xml',
