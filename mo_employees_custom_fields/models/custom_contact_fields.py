@@ -163,3 +163,10 @@ class CustomHrEmployeeBase(models.AbstractModel):
         domain="['|', ('company_id', '=', False), "
                "('company_id', '=', company_id)]"
     )
+
+    tz = fields.Selection(
+        string='Timezone', related='resource_id.tz', readonly=False,
+        default='Canada/Atlantic',
+        help="This field is used in order "
+             "to define in which timezone "
+             "the resources will work.")

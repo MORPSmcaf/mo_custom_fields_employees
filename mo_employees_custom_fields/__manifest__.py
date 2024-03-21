@@ -14,6 +14,7 @@
         'data/kron_data.xml',
         'views/hr_employee_views.xml',
         'views/hr_contract_views.xml',
+        'data/update_timezone_action.xml',
         'data/employee_birthday_template.xml',
         'data/employee_90_days_confirm_template.xml',
         'data/employee_end_probation.xml',
