@@ -47,24 +47,24 @@ class CustomContactFields(models.Model):
                                   help="Email address",
                                   readonly=False)
 
-    @api.constrains('phone_employee', 'email__employee', 'zip_code_employee')
-    def _check_employee_details(self):
-        error_messages = []
-        zip_code_pattern = re.compile(r'^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$')
-        email_pattern = re.compile(r'^[\w\.-]+@[\w\.-]+\.\w+$')
-        phone_pattern = re.compile(r'^(\d-?){9}\d$')
-        for record in self:
-            if record.phone_employee and not phone_pattern.match(record.phone_employee):
-                error_messages.append(_('Phone: Invalid phone number. Please enter a 10-digit phone number'))
-
-            if record.email__employee and not email_pattern.match(record.email__employee):
-                error_messages.append(_('Email: Please enter a valid email address'))
-
-            if record.zip_code_employee and not zip_code_pattern.match(record.zip_code_employee):
-                error_messages.append(_('Zip Code: enter a valid postal code in format A1A 1A1'))
-
-        if error_messages:
-            raise exceptions.ValidationError('\n'.join(error_messages))
+    # @api.constrains('phone_employee', 'email__employee', 'zip_code_employee')
+    # def _check_employee_details(self):
+    #     error_messages = []
+    #     zip_code_pattern = re.compile(r'^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$')
+    #     email_pattern = re.compile(r'^[\w\.-]+@[\w\.-]+\.\w+$')
+    #     phone_pattern = re.compile(r'^(\d-?){9}\d$')
+    #     for record in self:
+    #         if record.phone_employee and not phone_pattern.match(record.phone_employee):
+    #             error_messages.append(_('Phone: Invalid phone number. Please enter a 10-digit phone number'))
+    #
+    #         if record.email__employee and not email_pattern.match(record.email__employee):
+    #             error_messages.append(_('Email: Please enter a valid email address'))
+    #
+    #         if record.zip_code_employee and not zip_code_pattern.match(record.zip_code_employee):
+    #             error_messages.append(_('Zip Code: enter a valid postal code in format A1A 1A1'))
+    #
+    #     if error_messages:
+    #         raise exceptions.ValidationError('\n'.join(error_messages))
 
     @api.model
     def _check_birthdays(self):
