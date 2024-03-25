@@ -25,7 +25,6 @@
         'web.assets_backend': [
             '/mo_employees_custom_fields/static/src/css/test.css',
             'mo_employees_custom_fields/static/src/js/test.js',
-            'mo_employees_custom_fields/static/src/xml/bold.xml',
         ],
 
     },

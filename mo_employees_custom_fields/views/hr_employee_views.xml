@@ -7,6 +7,9 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="priority">10</field>
         <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="js_class">custom_hr_employee_form</attribute>
+            </form>
             <xpath expr="//field[@name='address_home_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -37,7 +40,7 @@
             </xpath>
             <xpath expr="//field[@name='country_employee_id']" position="after">
                 <field name="phone_employee" placeholder="123-456-7890"/>
-                <field name="email__employee" widget="custom_bold" placeholder="mail@example.com"/>
+                <field name="email__employee" placeholder="mail@example.com"/>
 
             </xpath>
         </field>
