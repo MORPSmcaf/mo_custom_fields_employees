@@ -8,10 +8,11 @@
     'license': 'OPL-1',
     "application": True,
     "installable": True,
-    'depends': ['base', 'hr', 'om_hr_payroll'],
+    'depends': ['base', 'hr', 'web', 'om_hr_payroll'],
     'data': [
         'security/ir.model.access.csv',
         'data/kron_data.xml',
+        'data/hr_demo.xml',
         'views/hr_employee_views.xml',
         'views/hr_contract_views.xml',
         'data/update_timezone_action.xml',
@@ -21,4 +22,11 @@
         'data/employee_reminder_probation.xml',
         'data/employee_tier_update.xml',
     ],
+
+    'assets': {
+        'web.assets_backend': [
+            'mo_employees_custom_fields/static/src/js/custom_fields_validation.js',
+        ],
+
+    },
 }
