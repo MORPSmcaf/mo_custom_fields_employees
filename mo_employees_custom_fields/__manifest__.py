@@ -12,6 +12,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/kron_data.xml',
+        'data/hr_demo.xml',
         'views/hr_employee_views.xml',
         'views/hr_contract_views.xml',
         'data/update_timezone_action.xml',
