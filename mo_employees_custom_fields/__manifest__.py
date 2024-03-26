@@ -23,7 +23,6 @@
 
     'assets': {
         'web.assets_backend': [
-            '/mo_employees_custom_fields/static/src/css/test.css',
             'mo_employees_custom_fields/static/src/js/test.js',
         ],
 

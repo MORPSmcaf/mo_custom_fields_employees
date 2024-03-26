@@ -12,33 +12,40 @@ export class CustomEmployeeFormController extends EmployeeFormController {
         super.setup();
     }
 
-    async saveButtonClicked(params = {}) {
+async saveButtonClicked(params = {}) {
+    this.disableButtons();
+    const record = this.model.root;
 
-        this.disableButtons();
-        const record = this.model.root;
-        let saved = false;
+    const email = record.data.email__employee;
 
-        if (this.props.saveRecord) {
-            saved = await this.props.saveRecord(record, params);
-        } else {
-            saved = await record.save();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        if (this.env && this.env.services && this.env.services.notification) {
+            this.env.services.notification.add('Invalid email format.', {
+                type: 'danger',
+                title: 'Validation Error',
+                sticky: false,
+            });
         }
         this.enableButtons();
-        if (saved && this.props.onSave) {
-            this.props.onSave(record, params);
-        }
-        if (saved) {
-            if (this.env && this.env.services && this.env.services.notification) {
-                this.env.services.notification.add('Custom save notification for HR.', {
-                    type: 'info',
-                    title: 'HR Custom Module',
-                    sticky: false,
-                });
-            }
-        }
-
-        return saved;
+        return false;
     }
+
+    let saved = false;
+    if (this.props.saveRecord) {
+        saved = await this.props.saveRecord(record, params);
+    } else {
+        saved = await record.save();
+    }
+
+    this.enableButtons();
+    if (saved && this.props.onSave) {
+        this.props.onSave(record, params);
+    }
+    return saved;
+}
+
 }
 
 export class EmployeeFormRenderer extends FormRenderer {
