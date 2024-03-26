@@ -49,7 +49,7 @@ async saveButtonClicked(params = {}) {
     }
     if (zipCode && !zipCodeRegex.test(zipCode)) {
         if (this.env && this.env.services && this.env.services.notification) {
-            this.env.services.notification.add('Invalid postal code format. Example: E3B 2A7, {
+            this.env.services.notification.add('Invalid postal code format. Example: E3B 2A7', {
                 type: 'danger',
                 title: 'Validation Error',
                 sticky: false,
