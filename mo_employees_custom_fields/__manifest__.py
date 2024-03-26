@@ -25,7 +25,7 @@
 
     'assets': {
         'web.assets_backend': [
-            'mo_employees_custom_fields/static/src/js/custom_controller.js',
+            'mo_employees_custom_fields/static/src/js/custom_fields_validation.js',
         ],
 
     },
